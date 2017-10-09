@@ -18,15 +18,15 @@ if (!is_null($events['events'])) {
 			
 			if($event['message']['text'] == 'dice6' || $event['message']['text'] == 'dice')
 			{
-				$guide = Rand(1,6);
+				$guide = rand(1,6);
 			}
 			elseif($event['message']['text'] == 'dice4')
 			{
-				$guide = Rand(1,4);
+				$guide = rand(1,4);
 			}
 			elseif($event['message']['text'] == 'dice9')
 			{
-				$guide = Rand(1,9);
+				$guide = rand(1,9);
 			}
 			
 			// Build message to reply back
