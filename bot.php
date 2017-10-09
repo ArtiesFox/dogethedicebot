@@ -47,13 +47,15 @@ if (!is_null($events['events'])) {
 				$trigger = file("knowledgebase/triggerword.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 				if(startwithinarray($text, $trigger))
 				{
-					$respondtext = "หมาเองหมาไง สั่งได้ตามนี้ dice roll ทอย โรล";
+					$triggerword_respond = file("knowledgebase/triggerword_respond.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+					$operationcmd = "dice roll ทอย โรล";
+					$triggerhelp = pickonefromarray($triggerword_respond);
+					$respondtext = "{$triggerhelp}{$operationcmd}";
 					
 					$messages = [
 						'type' => 'text',
 						'text' => $respondtext
-					];
-					
+					];					
 				}
 				else
 				{
