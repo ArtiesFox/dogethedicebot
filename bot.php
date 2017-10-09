@@ -1,6 +1,10 @@
 <?php
 $access_token = getenv('L_TOKE');
-
+//----------------------------------------
+include "lib/helper.php";
+//----------------------------------------
+$diceword = array("dice","ทอย","roll","โรล");
+//----------------------------------------
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -16,66 +20,55 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
-			if($text == 'dice6' || $text == 'dice')
+			//----------------------------------------
+			
+			if(startwithinarray($text, $diceword))
 			{
-				$rando = rand(1,6);
+				$respondtext = "";
+				$prefixtext = "";
+				$space = " ";
+				$textarray = explode($text);
+				
+				foreach($textarray as $t)
+				{
+					$rand = mt_rand(1,$t);
+					$respondtext .= "{$rand}{$space}";
+				}
+				
 				$messages = [
 					'type' => 'text',
-					'text' => $rando
+					'text' => $respondtext
 				];
 			}
-			else if($text == 'dice4')
+			else
 			{
-				$rando = rand(1,4);
-				$messages = [
-					'type' => 'text',
-					'text' => $rando
-				];
+				
 			}
-			else if($text == 'dice9')
-			{
-				$rando = rand(1,9);
-				$messages = [
-					'type' => 'text',
-					'text' => $rando
-				];
-			}
-			else if($text == 'help' || $text == 'fren' || $text == 'หมา')
-			{
-				// Build message to reply back
-				$messages = [
-					'type' => 'text',
-					'text' => 'me doge can dice dice4 dice6 dice9 fren'
-				];
-			}
-			else if($text == 'ควย')
-			{
-				// Build message to reply back
-				$messages = [
-					'type' => 'text',
-					'text' => 'ควยไรล่ะเฟรน เลาเสียใจนะเฟรน'
-				];
-			}
+			
+			//----------------------------------------
 
-			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			if(!is_null($message))
+			{
+				// Make a POST Request to Messaging API to reply to sender
+				$url = 'https://api.line.me/v2/bot/message/reply';
+				$data = [
+					'replyToken' => $replyToken,
+					'messages' => [$messages],
+				];
+				$post = json_encode($data);
+				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				$result = curl_exec($ch);
+				curl_close($ch);
 
-			echo $result . "\r\n";
+				echo $result . "\r\n";
+			}
 		}
 	}
 }
