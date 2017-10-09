@@ -45,7 +45,15 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => 'me doge can dice dice3 dice6 dice9 fren'
+					'text' => 'me doge can dice dice4 dice6 dice9 fren'
+				];
+			}
+			else if($text == 'ควย')
+			{
+				// Build message to reply back
+				$messages = [
+					'type' => 'text',
+					'text' => 'ควยไรล่ะเฟรน เลาเสียใจนะเฟรน'
 				];
 			}
 
