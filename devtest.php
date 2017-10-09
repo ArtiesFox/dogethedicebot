@@ -8,21 +8,31 @@ if (isset($_GET['test']))
 }
 else
 {
-  $test = "not found";
+  $test = "not found<br>";
 }
 
 include "lib/helper.php";
-echo "-- included</br>";
+echo "-- included<br>";
 
 $dice = array("dice","ทอย","@d");
-echo "-- array</br>";
+echo "-- array<br>";
 
 if(contains($test, $dice))
 {
-  echo "true";
+  echo "true<br>";
 }
 
-echo "-- if</br>";
+echo "-- if<br>";
+
+$names = file("knowledgebase/triggerword.txt");
+if(startwithinarray($test, $names))
+{
+  echo "triggered!!<br>";
+}
+else
+{
+  echo "lemme sleep<br>";
+}
 
 echo $test;
 ?>
