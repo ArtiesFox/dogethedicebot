@@ -20,11 +20,11 @@ if (!is_null($events['events'])) {
 			{
 				$guide = rand(1,6);
 			}
-			elseif($event['message']['text'] == 'dice4')
+			else if($event['message']['text'] == 'dice4')
 			{
 				$guide = rand(1,4);
 			}
-			elseif($event['message']['text'] == 'dice9')
+			else if($event['message']['text'] == 'dice9')
 			{
 				$guide = rand(1,9);
 			}
