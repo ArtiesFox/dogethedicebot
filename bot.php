@@ -1,7 +1,6 @@
 <?php
 $access_token = getenv('L_TOKE');
 //----------------------------------------
-include "lib/helper.php";
 //----------------------------------------
 $diceword = array("dice","ทอย","roll","โรล");
 //----------------------------------------
@@ -22,6 +21,7 @@ if (!is_null($events['events'])) {
 			
 			//----------------------------------------
 			
+			include "lib/helper.php";
 			if(startwithinarray($text, $diceword))
 			{
 				$respondtext = "";
@@ -44,10 +44,37 @@ if (!is_null($events['events'])) {
 			}
 			else
 			{
-				$messages = [
-					'type' => 'text',
-					'text' => '404 doge not found'.$text
-				];
+				$trigger = file("knowledgebase/triggerword.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+				if(startwithinarray($text, $trigger))
+				{
+					$respondtext = "หมาเองหมาไง สั่งได้ตามนี้ dice roll ทอย โรล";
+					
+					$messages = [
+						'type' => 'text',
+						'text' => $respondtext
+					];
+					
+				}
+				else
+				{
+					$curseword = file("knowledgebase/curseword.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+					if(startwithinarray($text, $curseword))
+					{
+						$curseword_respond = file("knowledgebase/curseword_respond.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+						$insult_suffix = file("knowledgebase/insult_suffix.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+						
+						$payback = pickonefromarray($curseword);
+						$respond = pickonefromarray($curseword_respond);
+						$suffix = pickonefromarray($insult_suffix);
+						
+						$respondtext = "{$payback}{$respond}{$suffix}";
+						
+						$messages = [
+							'type' => 'text',
+							'text' => $respondtext
+						];
+					}
+				}
 			}
 			
 			//----------------------------------------
