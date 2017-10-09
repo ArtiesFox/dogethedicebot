@@ -12,7 +12,7 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'];
+			$text = strtolower($event['message']['text']);
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
@@ -40,7 +40,7 @@ if (!is_null($events['events'])) {
 					'text' => $rando
 				];
 			}
-			else if($text == 'help' || $text == 'fren')
+			else if($text == 'help' || $text == 'fren' || $text == 'หมา')
 			{
 				// Build message to reply back
 				$messages = [
