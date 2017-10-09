@@ -21,7 +21,7 @@
     {
         foreach($refword as $ref)
         {
-            if(startwith($text, $refword))
+            if(startwith($text, $ref))
             {
                 return true;
             }
