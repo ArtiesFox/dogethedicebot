@@ -24,7 +24,7 @@ if(contains($test, $dice))
 
 echo "-- if<br>";
 
-$names = file("knowledgebase/triggerword.txt");
+$names = file("knowledgebase/triggerword.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 echo count($names).'<br>';
 foreach($names as $name)
 {
