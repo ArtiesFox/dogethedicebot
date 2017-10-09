@@ -16,38 +16,12 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
-			if($text == 'dice6' || $text == 'dice')
-			{
-				$rando = rand(1,6);
-				$messages = [
-					'type' => 'text',
-					'text' => $rando
-				];
-			}
-			else if($text == 'dice4')
-			{
-				$rando = rand(1,6);
-				$messages = [
-					'type' => 'text',
-					'text' => $rando
-				];
-			}
-			else if($text == 'dice9')
-			{
-				$rando = rand(1,6);
-				$messages = [
-					'type' => 'text',
-					'text' => $rando
-				];
-			}
-			else
-			{			
+					
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $guide
+					'text' => $text
 				];
-			}
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
