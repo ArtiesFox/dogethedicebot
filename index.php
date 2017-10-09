@@ -1,2 +1,3 @@
 <?php
-echo "This is doge";
+$greet = ENV['GREETING']
+echo $greet;
