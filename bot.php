@@ -1,6 +1,6 @@
 <?php
 $access_token = 'VU3Z4IF7ztZwLscjXzSKUBvwqdLbs7r2nxvaWn8jXU96EBH7oDZe8cEZ6bKzndWrmY8S6pnQ0VWWJiGD3KB2JoR9Dez+euL20hNu+AoPcSg7S+XGH7goLWgXCMAvwC/L0KumWUU4Im+HdSHGyCSSPgdB04t89/1O/w1cDnyilFU=';
-$guide = 'doge can only dice / dice3 / dice6 / dice9 fren'
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $text
+					'text' => 'doge can only dice dice3 dice6 dice9 fren'
 				];
 
 			// Make a POST Request to Messaging API to reply to sender
