@@ -1,5 +1,5 @@
 <?php
-$access_token = 'f3GSjb1lwSoZ/VLLhDekpZFDORekC8TFqWMIcJ452V/Hrf8RaC6hUzCDR0wCpKzWmY8S6pnQ0VWWJiGD3KB2JoR9Dez+euL20hNu+AoPcSgs8mIRYNUK9CL01IvpcAo3DDxMf9onFPXbxrr0jD52dQdB04t89/1O/w1cDnyilFU=';
+$access_token = 'VU3Z4IF7ztZwLscjXzSKUBvwqdLbs7r2nxvaWn8jXU96EBH7oDZe8cEZ6bKzndWrmY8S6pnQ0VWWJiGD3KB2JoR9Dez+euL20hNu+AoPcSg7S+XGH7goLWgXCMAvwC/L0KumWUU4Im+HdSHGyCSSPgdB04t89/1O/w1cDnyilFU=';
 $guide = 'doge can only dice / dice3 / dice6 / dice9 fren'
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -16,25 +16,28 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
-			if($event['message']['text'] == 'dice6' || $event['message']['text'] == 'dice')
+			if($text == 'dice6' || $text == 'dice')
 			{
+				$rando = rand(1,6);
 				$messages = [
 					'type' => 'text',
-					'text' => rand(1,6)
+					'text' => $rando
 				];
 			}
-			else if($event['message']['text'] == 'dice4')
+			else if($text == 'dice4')
 			{
+				$rando = rand(1,6);
 				$messages = [
 					'type' => 'text',
-					'text' => rand(1,4)
+					'text' => $rando
 				];
 			}
-			else if($event['message']['text'] == 'dice9')
+			else if($text == 'dice9')
 			{
+				$rando = rand(1,6);
 				$messages = [
 					'type' => 'text',
-					'text' => rand(1,9)
+					'text' => $rando
 				];
 			}
 			else
