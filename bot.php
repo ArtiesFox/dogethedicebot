@@ -1,6 +1,6 @@
 <?php
 $access_token = 'f3GSjb1lwSoZ/VLLhDekpZFDORekC8TFqWMIcJ452V/Hrf8RaC6hUzCDR0wCpKzWmY8S6pnQ0VWWJiGD3KB2JoR9Dez+euL20hNu+AoPcSgs8mIRYNUK9CL01IvpcAo3DDxMf9onFPXbxrr0jD52dQdB04t89/1O/w1cDnyilFU=';
-
+$guide = 'doge can only dice / dice3 / dice6 / dice9 fren'
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -15,12 +15,27 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $text
-			];
+			
+			if($event['message']['text'] == 'dice6' || $event['message']['text'] == 'dice')
+			{
+				$guide = Rand(1,6);
+			}
+			elseif($event['message']['text'] == 'dice4')
+			{
+				$guide = Rand(1,4);
+			}
+			elseif($event['message']['text'] == 'dice9')
+			{
+				$guide = Rand(1,9);
+			}
+			else
+			{
+				// Build message to reply back
+				$messages = [
+					'type' => 'text',
+					'text' => $guide
+				];
+			}
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
