@@ -28,7 +28,7 @@ $names = file("knowledgebase/triggerword.txt");
 echo count($names).'<br>';
 foreach($names as $name)
 {
-   echo $name.'<br>';
+   echo "{$name} {strlen($name)}<br>";
 }
 
 if(startwithinarray($test, $names))
