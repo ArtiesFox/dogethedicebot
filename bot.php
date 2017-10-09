@@ -68,8 +68,9 @@ if (!is_null($events['events'])) {
 						$payback = pickonefromarray($curseword);
 						$respond = pickonefromarray($curseword_respond);
 						$suffix = pickonefromarray($insult_suffix);
+						$space = " ";
 						
-						$respondtext = "{$payback}{$respond}{$suffix}";
+						$respondtext = "{$payback}{$respond}{$space}{$suffix}";
 						
 						$messages = [
 							'type' => 'text',
