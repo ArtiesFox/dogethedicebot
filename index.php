@@ -3,7 +3,7 @@
 <body>
   
 <?php
-$greet = env('GREETING')
+$greet = getenv('GREETING');
 echo $greet;
 >
 
