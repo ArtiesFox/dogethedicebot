@@ -25,6 +25,12 @@ if(contains($test, $dice))
 echo "-- if<br>";
 
 $names = file("knowledgebase/triggerword.txt");
+echo count($names).'<br>';
+foreach($names as $name)
+{
+   echo $name.'<br>';
+}
+
 if(startwithinarray($test, $names))
 {
   echo "triggered!!<br>";
