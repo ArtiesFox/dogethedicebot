@@ -37,6 +37,11 @@ if (!is_null($events['events'])) {
 					$respondtext .= "{$rand}{$space}";
 				}
 				
+				if(count($textarray) == 0)
+				{
+					$respondtext = mt_rand(1,6);
+				}
+				
 				$messages = [
 					'type' => 'text',
 					'text' => $respondtext
