@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 			}
 			else if($text == 'dice4')
 			{
-				$rando = rand(1,6);
+				$rando = rand(1,4);
 				$messages = [
 					'type' => 'text',
 					'text' => $rando
@@ -34,7 +34,7 @@ if (!is_null($events['events'])) {
 			}
 			else if($text == 'dice9')
 			{
-				$rando = rand(1,6);
+				$rando = rand(1,9);
 				$messages = [
 					'type' => 'text',
 					'text' => $rando
