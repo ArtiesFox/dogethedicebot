@@ -52,7 +52,7 @@ if (!is_null($events['events'])) {
 			
 			//----------------------------------------
 
-			if(!is_null($message))
+			if(!is_null($messages))
 			{
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
