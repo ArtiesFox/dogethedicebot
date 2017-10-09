@@ -1,7 +1,15 @@
 <?php
 $greet = getenv('GREETING');
 echo $greet;
-$test = $_GET['test']
+
+if (isset($_GET['test'])) 
+{
+  $test = $_GET['test'];
+}
+else
+{
+  $test = "not found";
+}
 
 include "lib/helper.php";
 echo "-- included</br>";
