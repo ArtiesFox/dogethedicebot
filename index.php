@@ -1,3 +1,3 @@
 <?php
-$greet = ENV['GREETING']
+$greet = getenv('GREETING')
 echo $greet;
