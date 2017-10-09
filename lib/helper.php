@@ -21,7 +21,10 @@
     {
         foreach($refword as $ref)
         {
-            return true;
+            if(startwith($text, $refword))
+            {
+                return true;
+            }
         }
         return false;
     }
