@@ -27,7 +27,9 @@ if (!is_null($events['events'])) {
 				$respondtext = "";
 				$prefixtext = "";
 				$space = " ";
-				$textarray = explode($text);
+				$textarray = explode(" ", $text);
+				$textcmd = $textarray[0];
+				unset($textarray[0]);
 				
 				foreach($textarray as $t)
 				{
