@@ -3,6 +3,7 @@ $access_token = getenv('L_TOKE');
 //----------------------------------------
 //----------------------------------------
 $diceword = array("dice","ทอย","roll","โรล");
+$calword = array("cal","คิดเลข");
 //----------------------------------------
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -40,6 +41,24 @@ if (!is_null($events['events'])) {
 				if(count($textarray) == 0)
 				{
 					$respondtext = mt_rand(1,6);
+				}
+				
+				$messages = [
+					'type' => 'text',
+					'text' => $respondtext
+				];
+			}
+			else if(startwithinarray($text, $calword))
+			{
+				$textarray = explode(" ", $text);
+				
+				if(count($textarray) > 1)
+				{
+					$respondtext = calculate_string($textarray[1]);
+				}
+				else
+				{
+					$respondtext = "สมการต้องไม่มีช่องว่างนะจ๊ะ อ๊ะๆๆๆ";
 				}
 				
 				$messages = [
