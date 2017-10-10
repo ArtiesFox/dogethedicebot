@@ -33,4 +33,13 @@
     {
         return $ref[mt_rand(0, count($ref) - 1)];
     }
+
+    function calculate_string($text)
+    {
+        $mathString = trim($text);
+        $mathString = str_replace('[^0-9\+-\*\/\(\) ]', '', $text);
+        $compute = create_function("", "return (" . $text . ");" );
+        return 0 + $compute();
+    }
+
 ?>
