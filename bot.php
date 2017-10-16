@@ -4,6 +4,7 @@ $access_token = getenv('L_TOKE');
 //----------------------------------------
 $diceword = array("dice","ทอย","roll","โรล");
 $calword = array("cal","คิดเลข");
+$randfromcmd = array("pick","สุ่ม","โอน้อย");
 //----------------------------------------
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -66,13 +67,52 @@ if (!is_null($events['events'])) {
 					'text' => $respondtext
 				];
 			}
+			else if(startwithinarray($text, $randfromcmd))
+			{
+				$textarray = explode(" ", $text);
+				
+				if(count($textarray) > 1)
+				{
+					unset($textarray[0]);
+					$respondtext = pickonefromarray($textarray);
+				}
+				else
+				{
+					$respondtext = "ใช้ spacebar ในการแบ่งแต่ละช่วงนะเฟรน";
+				}
+				
+				$messages = [
+					'type' => 'text',
+					'text' => $respondtext
+				];
+			}
+			else if(startwithinarray($text, "debugmode"))
+			{
+				$textarray = explode(" ", $text);
+				$lbluid = "userid ";
+				$uid = $event['source']['userId'];
+				
+				if(count($textarray) > 1)
+				{
+					$respondtext = "{$lbluid}{$uid}";
+				}
+				else
+				{
+					$respondtext = "";
+				}
+				
+				$messages = [
+					'type' => 'text',
+					'text' => $respondtext
+				];
+			}
 			else
 			{
 				$trigger = file("knowledgebase/triggerword.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 				if(startwithinarray($text, $trigger))
 				{
 					$triggerword_respond = file("knowledgebase/triggerword_respond.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-					$operationcmd = "dice roll ทอย โรล";
+					$operationcmd = "";//"dice roll ทอย โรล";
 					$triggerhelp = pickonefromarray($triggerword_respond);
 					$respondtext = "{$triggerhelp}{$operationcmd}";
 					
@@ -89,7 +129,7 @@ if (!is_null($events['events'])) {
 						$curseword_respond = file("knowledgebase/curseword_respond.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 						$insult_suffix = file("knowledgebase/insult_suffix.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 						
-						$payback = pickonefromarray($curseword);
+						$payback = "";//pickonefromarray($curseword);
 						$respond = pickonefromarray($curseword_respond);
 						$suffix = pickonefromarray($insult_suffix);
 						$space = " ";
