@@ -5,6 +5,7 @@ $access_token = getenv('L_TOKE');
 $diceword = array("dice","ทอย","roll","โรล");
 $calword = array("cal","คิดเลข");
 $randfromcmd = array("pick","สุ่ม","โอน้อย");
+$debugword = array("debugmode");
 //----------------------------------------
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -86,7 +87,7 @@ if (!is_null($events['events'])) {
 					'text' => $respondtext
 				];
 			}
-			else if(startwithinarray($text, "debugmode"))
+			else if(startwithinarray($text, $debugword))
 			{
 				$textarray = explode(" ", $text);
 				$lbluid = "userid ";
