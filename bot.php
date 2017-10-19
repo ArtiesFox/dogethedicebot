@@ -6,7 +6,7 @@ $diceword = array("dice","ทอย","roll","โรล");
 $calword = array("cal","คิดเลข");
 $randfromcmd = array("pick","สุ่ม","โอน้อย");
 $debugword = array("debugmode");
-$haha = array("555", "ถถถ");
+$haha = array("555", "ถถถ", "๕๕๕", "haha", "lol");
 //----------------------------------------
 // Get POST body content
 $content = file_get_contents('php://input');
