@@ -6,6 +6,7 @@ $diceword = array("dice","ทอย","roll","โรล");
 $calword = array("cal","คิดเลข");
 $randfromcmd = array("pick","สุ่ม","โอน้อย");
 $debugword = array("debugmode");
+$haha = array("555");
 //----------------------------------------
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -101,6 +102,23 @@ if (!is_null($events['events'])) {
 				{
 					$respondtext = "";
 				}
+				
+				$messages = [
+					'type' => 'text',
+					'text' => $respondtext
+				];
+			}
+			else if(startwithinarray($text, $haha))
+			{
+				$hatimes = mt_rand(1,5);
+				$ha = "555"
+				
+				for(i = 0; i > $hatimes; i++)
+				{
+					$ha .= "5";
+				}
+				
+				$respondtext = $ha;
 				
 				$messages = [
 					'type' => 'text',
