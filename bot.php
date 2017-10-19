@@ -111,11 +111,10 @@ if (!is_null($events['events'])) {
 			else if(startwithinarray($text, $haha))
 			{
 				$hatimes = mt_rand(1,5);
-				$ha = "555"
-				
-				for(i = 0; i < $hatimes; i++)
+				$ha = "555";
+				for ($i = 0; $i < $hatimes; $i++)
 				{
-					$ha .= "5";
+				    $ha .= "5";
 				}
 				
 				$respondtext = $ha;
